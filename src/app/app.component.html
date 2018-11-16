@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+
+
+<form #form = "ngForm" (ngSubmit)="onSubmit()" class="form-group">
+  <label>Nombre</label><input class="form-control" type="text" name="nombre" [(ngModel)]="persona.nombre" >
+  <label>Apellido</label><input class="form-control" type="text" name="apellido" [(ngModel)]="persona.apellido" >
+  <button type="submit" *ngIf = "!enableButtonMod">Enviar</button>
+  <button type="button" (click)="modifPersona()" *ngIf = "enableButtonMod">Modificar</button>
+</form>
+
+<h2>Content from Firebase</h2>
+	<ul *ngFor="let item of items; let i = index">
+		<li>{{item.persona.nombre}} {{item.persona.apellido}}
+      <button (click)="removePerson(i)">Elimina</button>
+      <button (click)="updatePerson(i)">Modificar</button>
+    </li>
+  </ul>
+
