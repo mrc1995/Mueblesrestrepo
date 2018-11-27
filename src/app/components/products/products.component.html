@@ -1,0 +1,13 @@
+<div class="row text-center">
+  <div class="col-md-4" *ngFor ="let item of items; let i = index">
+    <div class="card center-card" style="width: 16rem;">
+      <img class="card-img-top" src="{{item.persona.imagen}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{item.persona.nombre}}</h5>
+        <p class="card-text">{{item.persona.descripcion}}</p>
+        <p class="card-text">{{item.persona.valor | currency}}</p>
+        <button class="btn btn-primary" (click)="verMas(i)">Ver más</button>
+      </div>
+    </div>
+  </div>
+</div>

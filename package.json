@@ -25,6 +25,7 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
     "firebase": "^5.5.8",
+    "ngx-qrcode2": "0.0.9",
     "rxjs": "~6.3.3",
     "web-animations-js": "^2.3.1",
     "zone.js": "~0.8.26"

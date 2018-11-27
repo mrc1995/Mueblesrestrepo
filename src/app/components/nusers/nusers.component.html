@@ -1,0 +1,43 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="form-group">
+        <label>Nombre</label><input class="form-control" type="text" name="nombre" [(ngModel)]="persona.nombre">
+        <label>Descripcion</label><textarea class="form-control" type="text" name="descripcion" [(ngModel)]="persona.descripcion"></textarea>
+        <label>Valor</label><input class="form-control" type="text" name="valor" [(ngModel)]="persona.valor">
+        <div class="form-group mt-4">
+            <label>Imagen</label><input type="file" name="imagen" [(ngModel)]="persona.imagen" (change)="onChange ($event.target.files)">
+        </div>
+        <label for="sel1">Tipo Producto</label>
+        <select class="form-control" id="sel1" name="sellist1" [(ngModel)]="persona.tipo">
+            <option value="comedor">Comedor</option>
+            <option value="alcoba">Alcoba</option>
+            <option value="salas">Salas</option>
+        </select>
+
+        <button class="btn btn-primary mt-4" type="submit" *ngIf="!enableButtonMod">Enviar</button>
+        <button class="btn btn-primary" type="button" (click)="modifPersona()" *ngIf="enableButtonMod">Modificar</button>
+    </form>
+</div>
+
+<table class="table table-striped mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of items; let i = index">
+        <tr>
+            <td scope="row">{{item.persona.nombre}}</td>
+            <td>{{item.persona.descripcion}}</td>
+            <td>{{item.persona.valor | currency}}</td>
+            <td>{{item.persona.tipo}}</td>
+            <td>
+                <button class="btn btn-primary mr-2" (click)="updatePerson(i)">Modificar</button>
+                <button class="btn btn-primary" (click)="removePerson(i)">Eliminar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
